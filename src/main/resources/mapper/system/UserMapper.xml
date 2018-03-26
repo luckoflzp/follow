@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.G.system.dao.UserMapper">
+    <select id="select" parameterType="com.G.system.model.User" resultType="com.G.system.model.User">
+        SELECT userAct
+        ,userId
+        ,userPsd
+        ,userSex
+        ,userPosition
+        ,userName
+        ,userAge
+        ,userPhone
+        ,userEnable
+        ,userEmail
+        ,updateTime
+        ,userOrganizationName
+        ,userOrganizationCode
+        ,userDepartment
+        FROM T_USER WHERE 1=1
+        <if test="userAct != null and userAct !=  ''">
+            AND userAct = #{userAct}
+        </if>
+        <if test="userId != null and userId !=  ''">
+            AND userId = #{userId}
+        </if>
+        <if test="userPsd != null and userPsd !=  ''">
+            AND userPsd = #{userPsd}
+        </if>
+        <if test="userSex != null and userSex !=  ''">
+            AND userSex = #{userSex}
+        </if>
+        <if test="userPosition != null and userPosition !=  ''">
+            AND userPosition = #{userPosition}
+        </if>
+        <if test="userName != null and userName !=  ''">
+            AND userName = #{userName}
+        </if>
+        <if test="userAge != null and userAge !=  ''">
+            AND userAge = #{userAge}
+        </if>
+        <if test="userPhone != null and userPhone !=  ''">
+            AND userPhone = #{userPhone}
+        </if>
+        <if test="userEnable != null and userEnable !=  ''">
+            AND userEnable = #{userEnable}
+        </if>
+        <if test="userEmail != null and userEmail !=  ''">
+            AND userEmail = #{userEmail}
+        </if>
+        <if test="updateTime != null and updateTime !=  ''">
+            AND updateTime = #{updateTime}
+        </if>
+        <if test="userOrganizationName != null and userOrganizationName !=  ''">
+            AND userOrganizationName = #{userOrganizationName}
+        </if>
+        <if test="userOrganizationCode != null and userOrganizationCode !=  ''">
+            AND userOrganizationCode = #{userOrganizationCode}
+        </if>
+        <if test="userDepartment != null and userDepartment !=  ''">
+            AND userDepartment = #{userDepartment}
+        </if>
+    </select>
+    <update id="update" parameterType="com.G.utils.UpdateParameterUtils">
+      UPDATE T_USER SET
+        <if test="oldObject.userId != null and oldObject.userId !=  ''">
+            userId = #{oldObject.userId}
+        </if>
+        <if test="newObject.userAct != null and newObject.userAct !=  ''">
+           ,userAct = #{newObject.userAct}
+        </if>
+        <if test="newObject.userPsd != null and newObject.userPsd !=  ''">
+            ,userPsd = #{newObject.userPsd}
+        </if>
+        <if test="newObject.userSex != null and newObject.userSex !=  ''">
+            ,userSex = #{newObject.userSex}
+        </if>
+        <if test="newObject.userPosition != null and newObject.userPosition !=  ''">
+            ,userPosition = #{newObject.userPosition}
+        </if>
+        <if test="newObject.userName != null and newObject.userName !=  ''">
+            ,userName = #{newObject.userName}
+        </if>
+        <if test="newObject.userAge != null and newObject.userAge !=  ''">
+            ,userAge = #{newObject.userAge}
+        </if>
+        <if test="newObject.userPhone != null and newObject.userPhone !=  ''">
+            ,userPhone = #{newObject.userPhone}
+        </if>
+        <if test="newObject.userEnable != null and newObject.userEnable !=  ''">
+            ,userEnable = #{newObject.userEnable}
+        </if>
+        <if test="newObject.userEmail != null and newObject.userEmail !=  ''">
+            ,userEmail = #{newObject.userEmail}
+        </if>
+        <if test="newObject.updateTime != null and newObject.updateTime !=  ''">
+            ,updateTime = #{newObject.updateTime}
+        </if>
+        <if test="newObject.userOrganizationName != null and newObject.userOrganizationName !=  ''">
+            ,userOrganizationName = #{newObject.userOrganizationName}
+        </if>
+        <if test="newObject.userOrganizationCode != null and newObject.userOrganizationCode !=  ''">
+            ,userOrganizationCode = #{newObject.userOrganizationCode}
+        </if>
+        <if test="newObject.userDepartment != null and newObject.userDepartment !=  ''">
+            ,userDepartment = #{newObject.userDepartment}
+        </if>
+      WHERE
+        <if test="oldObject.userId != null and oldObject.userId !=  ''">
+            userId = #{oldObject.userId}
+        </if>
+        <if test="oldObject.userId == null or oldObject.userId ==  ''">
+            1!=1
+        </if>
+    </update>
+    <delete id="delete" parameterType="com.G.system.model.User">
+        DELETE FROM T_USER WHERE
+        <if test="userId != null and userId !=  ''">
+            userId = #{userId}
+        </if>
+        <if test="userId == null or userId ==  ''">
+            1!=1
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.G.system.model.User">
+        INSERT INTO T_USER (
+        <if test="userAct != null and userAct !=  ''">
+            userAct,
+        </if>
+        <if test="userIid != null and userIid !=  ''">
+            userIid,
+        </if>
+        <if test="userPsd != null and userPsd !=  ''">
+            userPsd
+        </if>
+        <if test="userSex != null and userSex !=  ''">
+            ,userSex
+        </if>
+        <if test="userPosition != null and userPosition !=  ''">
+            ,userPosition
+        </if>
+        <if test="userName != null and userName !=  ''">
+            ,userName
+        </if>
+        <if test="userAge != null and userAge !=  ''">
+            ,userAge
+        </if>
+        <if test="userPhone != null and userPhone !=  ''">
+            ,userPhone
+        </if>
+        <if test="userEnable != null and userEnable !=  ''">
+            ,userEnable
+        </if>
+        <if test="userEmail != null and userEmail !=  ''">
+            ,userEmail
+        </if>
+        <if test="updateTime != null and updateTime !=  ''">
+            ,updateTime
+        </if>
+        <if test="userOrganizationName != null and userOrganizationName !=  ''">
+            ,userOrganizationName
+        </if>
+        <if test="userOrganizationCode != null and userOrganizationCode !=  ''">
+            ,userOrganizationCode
+        </if>
+        <if test="userDepartment != null and userDepartment !=  ''">
+            ,userDepartment
+        </if>
+        ) VALUES (
+        <if test="userAct != null and userAct !=  ''">
+            #{userAct},
+        </if>
+        <if test="userIid != null and userIid !=  ''">
+            #{userIid},
+        </if>
+        <if test="userPsd != null and userPsd !=  ''">
+            ,#{userPsd}
+        </if>
+        <if test="userSex != null and userSex !=  ''">
+            ,#{userSex}
+        </if>
+        <if test="userPosition != null and userPosition !=  ''">
+            ,#{userPosition}
+        </if>
+        <if test="userName != null and userName !=  ''">
+            ,#{userName}
+        </if>
+        <if test="userAge != null and userAge !=  ''">
+            ,#{userAge}
+        </if>
+        <if test="userPhone != null and userPhone !=  ''">
+            ,#{userPhone}
+        </if>
+        <if test="userEnable != null and userEnable !=  ''">
+            ,#{userEnable}
+        </if>
+        <if test="userEmail != null and userEmail !=  ''">
+            ,#{userEmail}
+        </if>
+        <if test="updateTime != null and updateTime !=  ''">
+            ,#{updateTime}
+        </if>
+        <if test="userOrganizationName != null and userOrganizationName !=  ''">
+            ,#{userOrganizationName}
+        </if>
+        <if test="userOrganizationCode != null and userOrganizationCode !=  ''">
+            ,#{userOrganizationCode}
+        </if>
+        <if test="userDepartment != null and userDepartment !=  ''">
+            ,#{userDepartment}
+        </if>
+        )
+    </insert>
+</mapper>

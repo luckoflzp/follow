@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.G.system.dao.RoleUserMapper">
+    <select id="select" parameterType="com.G.system.model.RoleUser" resultType="com.G.system.model.RoleUser">
+        SELECT userId,roleId FROM T_ROLE_USER WHERE 1=1
+        <if test="userId != null and userId != ''">
+            AND userId = #{userId}
+        </if>
+        <if test="roleId != null and roleId != ''">
+            AND roleId = #{roleId}
+        </if>
+    </select>
+    <insert id="insert" parameterType="com.G.system.model.RoleUser">
+        INSERT INTO T_ROLE_USER (
+        <if test="userId != null and userId != ''">
+            userId
+        </if>
+        <if test="roleId != null and roleId != ''">
+            ,roleId
+        </if>
+        ) VALUES (
+        <if test="userId != null and userId != ''">
+            #{roleId}
+        </if>
+        <if test="roleId != null and roleId != ''">
+            ,#{roleId}
+        </if>
+        )
+    </insert>
+    <delete id="delete" parameterType="com.G.system.model.RoleUser">
+        DELETE FROM T_ROLE_USER WHERE roleId = #{roleId} and userId = #{userId}
+    </delete>
+</mapper>

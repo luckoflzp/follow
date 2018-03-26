@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.G.system.dao.RoleResourcesMapper">
+    <select id="select" parameterType="com.G.system.model.RoleResources" resultType="com.G.system.model.RoleResources">
+        SELECT roleId,resourcesId,operating FROM T_ROLE_RESOURCES WHERE 1=1
+        <if test="roleId != null and roleId != ''">
+            AND roleId = #{roleId}
+        </if>
+        <if test="resourcesId != null and resourcesId != ''">
+            AND resourcesId = #{resourcesId}
+        </if>
+        <if test="operating != null and operating != ''">
+            AND operating = #{operating}
+        </if>
+    </select>
+    <insert id="insert" parameterType="com.G.system.model.RoleResources">
+        INSERT INTO T_ROLE_RESOURCES (
+        <if test="roleId != null and roleId != ''">
+            roleId
+        </if>
+        <if test="resourcesId != null and resourcesId != ''">
+            ,resourcesId
+        </if>
+        <if test="operating != null and operating != ''">
+            ,operating
+        </if>
+        ) VALUES (
+        <if test="roleId != null and roleId != ''">
+            #{roleId}
+        </if>
+        <if test="resourcesId != null and resourcesId != ''">
+            ,#{resourcesId}
+        </if>
+        <if test="operating != null and operating != ''">
+            ,#{operating}
+        </if>
+        )
+    </insert>
+    <update id="update" parameterType="com.G.utils.UpdateParameterUtils">
+        UPDATE T_ROLE_RESOURCES SET operating = #{newObject.operating} WHERE roleId = #{oldObject.roleId} and resourcesId = #{oldObject.resourcesId}
+    </update>
+    <delete id="delete" parameterType="com.G.system.model.RoleResources">
+        DELETE FROM T_ROLE_RESOURCES WHERE roleId = #{roleId} and resourcesId = #{resourcesId}
+    </delete>
+</mapper>

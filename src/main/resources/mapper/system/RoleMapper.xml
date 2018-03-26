@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.G.system.dao.RoleMapper">
+    <select id="select" parameterType="com.G.system.model.Role" resultType="com.G.system.model.Role">
+        SELECT roleId,roleName,roleCode,parentId FROM T_ROLE WHERE 1=1
+        <if test="roleId != null and roleId != ''">
+            AND roleId = #{roleId}
+        </if>
+        <if test="roleName != null and roleName != ''">
+            AND roleName = #{roleName}
+        </if>
+        <if test="roleCode != null and roleCode != ''">
+            AND roleCode = #{roleCode}
+        </if>
+        <if test="parentId != null and parentId != ''">
+            AND parentId = #{parentId}
+        </if>
+    </select>
+    <insert id="insert" parameterType="com.G.system.model.Role">
+        INSERT INTO T_ROLE (
+        <if test="roleId != null and roleId != ''">
+            roleId
+        </if>
+        <if test="roleName != null and roleName != ''">
+            ,roleName
+        </if>
+        <if test="roleCode != null and roleCode != ''">
+            ,roleCode
+        </if>
+        <if test="parentId != null and parentId != ''">
+            ,parentId
+        </if>
+        ) VALUES (
+        <if test="roleId != null and roleId != ''">
+            #{roleId}
+        </if>
+        <if test="roleName != null and roleName != ''">
+            ,#{roleName}
+        </if>
+        <if test="roleCode != null and roleCode != ''">
+            ,#{roleCode}
+        </if>
+        <if test="parentId != null and parentId != ''">
+            ,#{parentId}
+        </if>
+        )
+    </insert>
+    <update id="update" parameterType="com.G.utils.UpdateParameterUtils">
+        UPDATE T_ROLE SET
+        <if test="oldObject.roleId != null and oldObject.roleId !=  ''">
+            roleId = #{oldObject.roleId}
+        </if>
+        <if test="newObject.roleName != null and newObject.roleName != ''">
+            ,roleName = #{newObject.roleName}
+        </if>
+        <if test="newObject.roleCode != null and newObject.roleCode != ''">
+            ,roleCode = #{newObject.roleCode}
+        </if>
+        <if test="newObject.parentId != null and newObject.parentId != ''">
+            ,parentId = #{newObject.parentId}
+        </if>
+        WHERE
+        <if test="oldObject.roleId != null and oldObject.roleId !=  ''">
+            roleId = #{oldObject.roleId}
+        </if>
+        <if test="oldObject.roleId == null or oldObject.roleId ==  ''">
+            1!=1
+        </if>
+    </update>
+    <delete id="delete" parameterType="com.G.system.model.Role">
+        DELETE FROM T_ROLE WHERE
+        <if test="roleId != null and roleId !=  ''">
+            roleId = #{roleId}
+        </if>
+        <if test="roleId == null or roleId ==  ''">
+            1!=1
+        </if>
+    </delete>
+</mapper>

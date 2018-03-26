@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.G.system.dao.ResourcesMapper">
+    <select id="select" parameterType="com.G.system.model.Resources" resultType="com.G.system.model.Resources">
+        SELECT resourcesId,resourcesName,resourcesUrl,resourcesDescription FROM T_Resources WHERE 1=1
+        <if test="resourcesId != null and resourcesId != ''">
+            AND resourcesId = #{resourcesId}
+        </if>
+        <if test="resourcesName != null and resourcesName != ''">
+            AND resourcesName = #{resourcesName}
+        </if>
+        <if test="resourcesUrl != null and resourcesUrl != ''">
+            AND resourcesUrl = #{resourcesUrl}
+        </if>
+        <if test="resourcesDescription != null and resourcesDescription != ''">
+            AND resourcesDescription = #{resourcesDescription}
+        </if>
+    </select>
+    <insert id="insert" parameterType="com.G.system.model.Resources">
+        INSERT INTO T_Resources (
+        <if test="resourcesId != null and resourcesId != ''">
+            resourcesId
+        </if>
+        <if test="resourcesName != null and resourcesName != ''">
+            ,resourcesName
+        </if>
+        <if test="resourcesUrl != null and resourcesUrl != ''">
+            ,resourcesUrl
+        </if>
+        <if test="resourcesDescription != null and resourcesDescription != ''">
+            ,resourcesDescription
+        </if>
+        ) VALUES (
+        <if test="resourcesId != null and resourcesId != ''">
+            #{resourcesId}
+        </if>
+        <if test="resourcesName != null and resourcesName != ''">
+            ,#{resourcesName}
+        </if>
+        <if test="resourcesUrl != null and resourcesUrl != ''">
+            ,#{resourcesUrl}
+        </if>
+        <if test="resourcesDescription != null and resourcesDescription != ''">
+            ,#{resourcesDescription}
+        </if>
+        )
+    </insert>
+    <update id="update" parameterType="com.G.utils.UpdateParameterUtils">
+        UPDATE T_Resources SET
+        <if test="oldObject.resourcesId != null and oldObject.resourcesId !=  ''">
+            resourcesId = #{oldObject.resourcesId}
+        </if>
+        <if test="newObject.resourcesName != null and newObject.resourcesName != ''">
+             ,resourcesName = #{newObject.resourcesName}
+        </if>
+        <if test="newObject.resourcesUrl != null and newObject.resourcesUrl != ''">
+            ,resourcesUrl = #{newObject.resourcesUrl}
+        </if>
+        <if test="newObject.resourcesDescription != null and newObject.resourcesDescription != ''">
+            ,resourcesDescription = #{newObject.resourcesDescription}
+        </if>
+        WHERE
+        <if test="oldObject.resourcesId != null and oldObject.resourcesId !=  ''">
+            resourcesId = #{oldObject.resourcesId}
+        </if>
+        <if test="oldObject.resourcesId == null or oldObject.resourcesId ==  ''">
+            1!=1
+        </if>
+    </update>
+    <delete id="delete" parameterType="com.G.system.model.Resources">
+        DELETE FROM T_Resources WHERE
+        <if test="resourcesId != null and resourcesId !=  ''">
+            resourcesId = #{resourcesId}
+        </if>
+        <if test="resourcesId == null or resourcesId ==  ''">
+            1!=1
+        </if>
+    </delete>
+</mapper>

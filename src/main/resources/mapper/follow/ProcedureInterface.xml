@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.G.follow.dao.ProcedureInterface">
+    <parameterMap type="map" id="paramsMap">
+        <parameter property="action" javaType="String" jdbcType="VARCHAR" mode="IN"/>
+    </parameterMap>
+    <select id="operaProcedure" parameterMap="paramsMap" resultType="java.util.Map" statementType="CALLABLE">
+		{
+			call dbo.sp_common(#{action,mode=IN,jdbcType=VARCHAR})
+		}
+	</select>
+</mapper>
